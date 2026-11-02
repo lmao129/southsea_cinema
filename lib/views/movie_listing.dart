@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
+import 'package:southsea_cinema/repositories/movie_repository.dart';
 
 class MovieListing extends StatefulWidget {
+  
   const MovieListing({super.key});
 
   @override
@@ -10,6 +12,8 @@ class MovieListing extends StatefulWidget {
 }
 
 class _MovieListingState extends State<MovieListing> {
+  final MovieRepository _movieRepository = MovieRepository();
+
   int _ticketQuantity = 1;  
   String _bookingMessage = '';
   @override
@@ -25,8 +29,12 @@ class _MovieListingState extends State<MovieListing> {
      body: Container(
   child: Column(
   children: [
-    Text('The Lion King'),
-Text('A young lion discovers his destiny as king.'),
+    Image.asset(
+  _movieRepository.movies[0].imagePath,
+  height: 200,
+),
+Text(_movieRepository.movies[0].title),
+Text(_movieRepository.movies[0].description),
 DropdownMenu<int>(
   initialSelection: _ticketQuantity,
   onSelected: (int? value) {
