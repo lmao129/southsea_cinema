@@ -7,7 +7,7 @@ final List<Movie> movies = [
     title: 'The Lion King',
     description: 'A young lion discovers his destiny as king.',
     price: 10.0,
-    imagePath: 'assets/images/Lion_King.jpg.JPG',
+    imagePath: 'assets/images/Lion_King.jpg',
   ),
 ];
 }
