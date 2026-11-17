@@ -54,10 +54,15 @@ DropdownMenu<int>(
   ],
 ),
 Text('Tickets selected: $_ticketQuantity'),
+Text(
+  'Total: £${(_movieRepository.movies[0].price * _ticketQuantity).toStringAsFixed(2)}',
+),
 ElevatedButton(
   onPressed: () {
   setState(() {
-    _bookingMessage = 'Added $_ticketQuantity tickets to the order';
+
+_bookingMessage = 'Added $_ticketQuantity tickets to the order. Total: £${(_movieRepository.movies[0].price * _ticketQuantity).toStringAsFixed(2)}';
+
   });
 },
   child: const Text('Add to order'),
