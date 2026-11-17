@@ -57,6 +57,9 @@ DropdownMenu<int>(
 ),
 Text('Tickets selected: $_ticketQuantity'),
 Text(
+  'Ticket price: ${widget.movie.formattedPrice}',
+),
+Text(
   'Total: £${(widget.movie.price * _ticketQuantity).toStringAsFixed(2)}',
 ),
 ElevatedButton(

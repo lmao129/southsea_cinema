@@ -16,4 +16,5 @@ class Movie {
     required this.ageRating,
     required this.screeningTime,
   });
+  String get formattedPrice => '£${price.toStringAsFixed(2)}';
 }
