@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 import 'package:southsea_cinema/repositories/movie_repository.dart';
+import 'package:southsea_cinema/models/movie.dart';
 
 class MovieListing extends StatefulWidget {
-  
-  const MovieListing({super.key});
+  final Movie movie;
+
+  const MovieListing({super.key, required this.movie});
 
   @override
   State<MovieListing> createState() => _MovieListingState();
@@ -30,11 +32,11 @@ class _MovieListingState extends State<MovieListing> {
   child: Column(
   children: [
     Image.asset(
-  _movieRepository.movies[0].imagePath,
+  widget.movie.imagePath,
   height: 200,
 ),
-Text(_movieRepository.movies[0].title),
-Text(_movieRepository.movies[0].description),
+Text(widget.movie.title),
+Text(widget.movie.description),
 DropdownMenu<int>(
   initialSelection: _ticketQuantity,
   onSelected: (int? value) {
@@ -55,13 +57,13 @@ DropdownMenu<int>(
 ),
 Text('Tickets selected: $_ticketQuantity'),
 Text(
-  'Total: £${(_movieRepository.movies[0].price * _ticketQuantity).toStringAsFixed(2)}',
+  'Total: £${(widget.movie.price * _ticketQuantity).toStringAsFixed(2)}',
 ),
 ElevatedButton(
   onPressed: () {
   setState(() {
 
-_bookingMessage = 'Added $_ticketQuantity tickets to the order. Total: £${(_movieRepository.movies[0].price * _ticketQuantity).toStringAsFixed(2)}';
+_bookingMessage = 'Added $_ticketQuantity tickets to the order. Total: £${(widget.movie.price * _ticketQuantity).toStringAsFixed(2)}';
 
   });
 },
