@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
-import 'package:southsea_cinema/repositories/movie_repository.dart';
+
 import 'package:southsea_cinema/models/movie.dart';
 
 class MovieListing extends StatefulWidget {
@@ -14,7 +14,7 @@ class MovieListing extends StatefulWidget {
 }
 
 class _MovieListingState extends State<MovieListing> {
-  final MovieRepository _movieRepository = MovieRepository();
+  
 
   int _ticketQuantity = 1;  
   String _bookingMessage = '';
@@ -28,8 +28,7 @@ class _MovieListingState extends State<MovieListing> {
         elevation: 0,
       ),
       drawer: const NavDrawer(),
-     body: Container(
-  child: Column(
+     body: Column(
   children: [
     Image.asset(
   widget.movie.imagePath,
@@ -43,7 +42,6 @@ DropdownMenu<int>(
   if (value != null) {
     setState(() {
       _ticketQuantity = value;
-      print('Tickets selected: $_ticketQuantity');
     });
   }
 },
@@ -74,8 +72,7 @@ _bookingMessage = 'Added $_ticketQuantity tickets to the order. Total: £${(widg
 ),
 Text(_bookingMessage),
   ],
-),
-),
-    );
+  ), // Column
+  ); // Scaffold
   }
 }
