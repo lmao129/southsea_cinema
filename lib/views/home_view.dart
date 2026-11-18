@@ -20,13 +20,16 @@ class HomeView extends StatelessWidget {
         elevation: 0,
       ),
       drawer: const NavDrawer(),
-      body: ListView(
-      padding: const EdgeInsets.all(16.0),
-      children: MovieRepository()
-      .getMovies()
-      .map((movie) => MovieCard(movie: movie))
-      .toList(),
-),
+      
+      body: ListView.builder(
+        padding: const EdgeInsets.all(16.0),
+        itemCount: MovieRepository().getMovies().length,
+        itemBuilder: (context, index) {
+          final movie = MovieRepository().getMovies()[index];
+          return MovieCard(movie: movie);
+        },
+      ),
+
     );
   }
 }

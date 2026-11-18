@@ -17,16 +17,31 @@ class MovieCard extends StatelessWidget {
         style: const TextStyle(color: Colors.black, fontSize: 16),
         child: Column(
         children: [
-          Image.asset(
-            movie.imagePath,
-            height: 250,
-            width: 180,
-            fit: BoxFit.cover,
-          ),
-          Text(movie.title),
-          Text(movie.ageRating),
-          Text(movie.description),
-          Text(movie.screeningTime),
+              Text(
+      '${movie.title} (${movie.ageRating})',
+      style: const TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 18,
+      ),
+    ),
+    const SizedBox(height: 10),
+    Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Image.asset(
+          movie.imagePath,
+          height: 150,
+          width: 100,
+          fit: BoxFit.cover,
+        ),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Text(movie.description),
+        ),
+      ],
+    ),
+    const SizedBox(height: 10),
+    Text('Screening time: ${movie.screeningTime}'),
           ElevatedButton(
            onPressed: () {
           Navigator.push(
